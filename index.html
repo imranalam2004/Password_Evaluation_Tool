@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glass-container">
+        <h1>Safety First</h1>
+        <p class="subtitle">Evaluate your password's strength down to the millisecond</p>
+        
+        <form class="landscape-layout" onsubmit="return false;">
+            <div class="left-col">
+                <div class="input-wrapper">
+                    <input type="password" id="password" placeholder="Type a password..." oninput="checkPassword()" maxlength="12">
+                </div>
+
+                <div class="results-panel left-panel-box">
+                    <div class="criteria-grid">
+                        <div class="criterion" id="length-container"><span class="icon">✗</span> <span id="length" class="criterion-text">8+ Characters</span></div>
+                        <div class="criterion" id="length12-container"><span class="icon">✗</span> <span id="length12" class="criterion-text">12+ Characters</span></div>
+                        <div class="criterion" id="numbers-container"><span class="icon">✗</span> <span id="numbers" class="criterion-text">Numbers</span></div>
+                        <div class="criterion" id="lowercase-container"><span class="icon">✗</span> <span id="lowercase" class="criterion-text">Lowercase</span></div>
+                        <div class="criterion" id="uppercase-container"><span class="icon">✗</span> <span id="uppercase" class="criterion-text">Uppercase</span></div>
+                        <div class="criterion" id="specialChars-container"><span class="icon">✗</span> <span id="specialChars" class="criterion-text">Special Chars</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-col">
+                <div class="meter-container results-panel">
+                    <div class="clock-gauge">
+                        <svg viewBox="0 0 200 110" class="gauge-svg">
+                            <path d="M 10 100 A 90 90 0 0 1 55 22.06" stroke="var(--meter-weak)" stroke-width="16" fill="none" class="gauge-path"/>
+                            <path d="M 55 22.06 A 90 90 0 0 1 145 22.06" stroke="var(--meter-moderate)" stroke-width="16" fill="none" class="gauge-path"/>
+                            <path d="M 145 22.06 A 90 90 0 0 1 190 100" stroke="var(--meter-strong)" stroke-width="16" fill="none" class="gauge-path"/>
+                        </svg>
+                        <div class="gauge-needle-container">
+                            <div class="gauge-needle" id="gauge-needle"></div>
+                            <div class="needle-base"></div>
+                        </div>
+                    </div>
+                    <div id="strength" class="strength-text">Awaiting input...</div>
+                </div>
+
+                <div class="results-panel right-bottom">
+                    <div class="eta-box">
+                        <span class="eta-label">Estimated time to crack:</span>
+                        <span id="time_to_crack" class="eta-time">-</span>
+                    </div>
+                    
+                    <div class="suggestions-box glass-panel">
+                        <span class="suggestions-title">Suggestions</span>
+                        <ul id="suggestions-list">
+                            <li>Start typing to get suggestions...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
